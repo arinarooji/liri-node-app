@@ -1,5 +1,5 @@
 //Twitter
-var Twitter = require("twitter");
+var Twitter = require('twitter');
 var twitterKeys = new Twitter ({
   consumer_key: '4LsmsvjIfKfZpx9E3egmCz8DY',
   consumer_secret: 'HR8MWpxVRT2KmTkUbPVFol2r3Ds4R8SdKKyOajDA2cqrRgzG2i',
@@ -16,7 +16,7 @@ var spotifyKeys =  new Spotify ({
 
 //OMDB
 var omdbKey = {
-  apiKey: '40e9cece'
+  url: 'http://www.omdbapi.com/?apikey=40e9cece&t=',
 }
 
 //Export keys

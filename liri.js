@@ -1,5 +1,6 @@
 //Grab the data from keys.js
 var Keys = require('./keys.js');
+var request = require('request');
 
 //Then store the keys in a variable
 var twitter = Keys.twitterKeys;
@@ -26,8 +27,8 @@ else if (task.toLowerCase() === 'spotify') {
         if (err) {
             return console.log('Error occurred: ' + err);
         }
-        console.log("TOP 3 RESULTS");
         for (var i = 0; i < 3; i++) {
+            //Result count
             console.log("RESULT: " + (i + 1));
             //Artist name
             console.log("Artist: ", data.tracks.items[i].album.artists[0].name);
@@ -42,15 +43,24 @@ else if (task.toLowerCase() === 'spotify') {
         }
     });
 }
-
-
-//Commands
-//Using the fs Node package, LIRI will take the text inside of random.txt and then use it to call one of LIRI's commands.
-    
-    //my-tweets : show last 20 tweets
-        //Read docs
-
-    //spotify-this-song '<song name here>': show song info (artist, song name, preview link, album) (default to "The Sign" by Ace of Base)
-        //sign up as dev for credentials
-    
-    //node liri.js movie-this '<movie name here>' : show movie data (default mr nobody)
+//Movie search
+else if (task.toLowerCase() === "movie") {
+    request(omdb.url+'mr+nobody', function (error, response, body) {
+        if (error) {
+            console.log('error:', error);
+            console.log('statusCode:', response && response.statusCode); 
+        }
+        //Convert string to JSON object
+        var data = JSON.parse(body)
+        //Desired properties to log
+        var properties = [data.Title, data.Year, data.Rated, data.Ratings[1].Value,
+                            data.Country, data.Language, data.Plot, data.Actors];
+        //Property text (aesthetics)
+        var text = ['Title: ', 'Year: ', 'Rated: ', 'Rotten Tomatoes: ', 
+                    'Country: ', 'Language: ', 'Plot: ', 'Actors: '];
+        //Log results
+        for (var i = 0; i < properties.length; i++) {
+            console.log(text[i], properties[i]);
+        }
+    });
+}
