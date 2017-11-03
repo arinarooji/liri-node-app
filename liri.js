@@ -9,6 +9,8 @@ var omdb    = Keys.omdbKey;
 //Input (test)
 var task = process.argv[2];
 
+//COMMANDS
+//Retrieve 20 most recent tweets
 if (task.toLowerCase() === "my-tweets") {
     twitter.get('statuses/user_timeline', function(error, tweets, response) {
       if (!error) {
@@ -18,8 +20,27 @@ if (task.toLowerCase() === "my-tweets") {
       }
     });
 }
+//Search by song name (return top 3 results)
 else if (task.toLowerCase() === 'spotify') {
-    console.log('spotify this');
+    spotify.search({ type: 'track', query: 'I Want it That Way', limit: 3 }, function(err, data) {
+        if (err) {
+            return console.log('Error occurred: ' + err);
+        }
+        console.log("TOP 3 RESULTS");
+        for (var i = 0; i < 3; i++) {
+            console.log("RESULT: " + (i + 1));
+            //Artist name
+            console.log("Artist: ", data.tracks.items[i].album.artists[0].name);
+            //Song name
+            console.log("Song: ", data.tracks.items[i].name);
+            //Preview URL
+            console.log("Preview: ", data.tracks.items[i].preview_url);
+            //Album name
+            console.log("Album: ", data.tracks.items[i].album.name);
+            //Space (Aesthetics)
+            console.log("");
+        }
+    });
 }
 
 

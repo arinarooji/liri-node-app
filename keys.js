@@ -8,10 +8,11 @@ var twitterKeys = new Twitter ({
 });
 
 //Spotify
-var spotifyKeys = {
-  clientID: '010cd4ab4abb47ca88ba3e0b5cf696aa',
-  clientSecret: '94a9654ea42e4477aaeab69fe534ecb4'
-}
+var Spotify = require('node-spotify-api');
+var spotifyKeys =  new Spotify ({
+  id: '010cd4ab4abb47ca88ba3e0b5cf696aa',
+  secret: '94a9654ea42e4477aaeab69fe534ecb4'
+});
 
 //OMDB
 var omdbKey = {
