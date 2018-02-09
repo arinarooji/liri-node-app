@@ -26,6 +26,16 @@ _____
 - Use the **up/down arrow keys** to select the **my-tweets** command, then hit **enter**.
 - The last 20 tweets associated with the provided keys will appear, each with a date and time.
 
+#### Reading From .txt
+- LIRI can also read commands directly from the included **random.txt** file!
+- In **random.txt**, type one of the commands listed above (no spaces or quotes, just hyphens).
+- In **random.txt**, separate the command with a **comma**, then type your song/movie immediately after.
+  - Example: *spotify-this-song,"Song/movie name here"*
+  - Note that the **my-tweets** command does not need a search query.
+- In the command line, type **node liri** to start the app
+- Use the **up/down arrow keys** to select the **do-what-it-says** command, then hit **enter**.
+- LIRI will then execute the supported command!
+
 #### Getting Your Twitter API Keys
 - Step One: Visit https://apps.twitter.com/app/new
 - Step Two: Fill out the form with dummy data. Type http://google.com in the Website input. Don't fill out the Callback URL input. Then submit the form.
